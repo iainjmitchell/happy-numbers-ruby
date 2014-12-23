@@ -19,9 +19,9 @@ class Mathematician
 
 	def is_happy?(number)
 		digits = DigitsFactory.create(number)
-		squared_digits = square_digits(digits)
-		return squared_digits == HAPPY_NUMBER unless squared_digits > 9
-		return is_happy? squared_digits
+		squared = square_digits(digits)
+		return squared == HAPPY_NUMBER unless squared > 9
+		return is_happy? squared
 	end
 
 	def square_digits(digits)
