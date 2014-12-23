@@ -2,14 +2,16 @@ require 'test/unit'
 
 class TestHappyNumbers < Test::Unit::TestCase
 	def test_happy_numbers
-		[1, 7, 10].each do |happy_number|
-			assert_equal Mathematician.new.is_happy?(happy_number), true, "#{happy_number}"
+		[1, 7, 10, 49, 931, 998].each do |happy_number|
+			assert_equal Mathematician.new.is_happy?(happy_number), true, 
+				"#{happy_number} should be happy"
 		end
 	end
 
 	def test_sad_numbers
-		[2, 3].each do |sad_number|
-			assert_equal Mathematician.new.is_happy?(sad_number), false, "#{sad_number}"
+		[2, 3, 4, 9, 12, 339, 567, 654].each do |sad_number|
+			assert_equal Mathematician.new.is_happy?(sad_number), false, 
+				"#{sad_number} should be sad"
 		end
 	end
 end
