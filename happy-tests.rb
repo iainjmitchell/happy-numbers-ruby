@@ -2,14 +2,14 @@ require 'test/unit'
 
 class TestHappyNumbers < Test::Unit::TestCase
 	def test_happy_numbers
-		[1, 10].each do |happy_number|
-			assert_equal Mathematician.new.is_happy?(happy_number), true
+		[1, 7, 10].each do |happy_number|
+			assert_equal Mathematician.new.is_happy?(happy_number), true, "#{happy_number}"
 		end
 	end
 
 	def test_sad_numbers
 		[2, 3].each do |sad_number|
-			assert_equal Mathematician.new.is_happy?(sad_number), false
+			assert_equal Mathematician.new.is_happy?(sad_number), false, "#{sad_number}"
 		end
 	end
 end
@@ -19,14 +19,16 @@ class Mathematician
 
 	def is_happy?(number)
 		digits = DigitsFactory.create(number)
-		return square_digits(digits) == HAPPY_NUMBER
+		squared_digits = square_digits(digits)
+		return squared_digits == HAPPY_NUMBER if squared_digits < 10
+		return is_happy? squared_digits
 	end
 
 	def square_digits(digits)
 		head, *tail = digits
-		squared_digit = head * head
-		return squared_digit if (tail.length == 0)
-		return squared_digit + square_digits(tail)
+		squared = head * head
+		return squared + square_digits(tail) unless tail.empty?	
+		return squared
 	end
 end	
 
