@@ -15,9 +15,11 @@ class TestHappyNumbers < Test::Unit::TestCase
 end
 
 class Mathematician
+	HAPPY_NUMBER = 1
+
 	def is_happy?(number)
-		digits = to_digits(number)
-		return square_digits(digits) == 1
+		digits = DigitsFactory.create(number)
+		return square_digits(digits) == HAPPY_NUMBER
 	end
 
 	def square_digits(digits)
@@ -26,8 +28,10 @@ class Mathematician
 		return squared_digit if (tail.length == 0)
 		return squared_digit + square_digits(tail)
 	end
+end	
 
-	def to_digits(number)
+class DigitsFactory
+	def self.create(number)
 		digits = []
 		remaining = number
 		while(remaining > 0) do 
@@ -36,5 +40,5 @@ class Mathematician
 			digits.push(digit)
 		end
 		return digits
-	end
-end	
+	end 
+end
