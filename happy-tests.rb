@@ -20,7 +20,7 @@ class Mathematician
 	def is_happy?(number)
 		digits = DigitsFactory.create(number)
 		squared_digits = square_digits(digits)
-		return squared_digits == HAPPY_NUMBER if squared_digits < 10
+		return squared_digits == HAPPY_NUMBER unless squared_digits > 9
 		return is_happy? squared_digits
 	end
 
