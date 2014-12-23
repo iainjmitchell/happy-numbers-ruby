@@ -22,8 +22,9 @@ class Mathematician
 
 	def square_digits(digits)
 		head, *tail = digits
-		return head * head if (tail.length == 0)
-		return head * head + square_digits(tail)
+		squared_digit = head * head
+		return squared_digit if (tail.length == 0)
+		return squared_digit + square_digits(tail)
 	end
 
 	def to_digits(number)
