@@ -16,7 +16,6 @@ end
 
 class Mathematician
 	def is_happy?(number)
-		return true if number == 1 
-		return false	
+		return number == 1	
 	end
 end	
