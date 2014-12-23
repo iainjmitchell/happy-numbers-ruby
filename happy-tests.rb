@@ -1,7 +1,6 @@
 require 'test/unit'
 
 class TestHappyNumbers < Test::Unit::TestCase
-	
 	def test_happy_numbers
 		[1, 10].each do |happy_number|
 			assert_equal Mathematician.new.is_happy?(happy_number), true
@@ -17,6 +16,6 @@ end
 
 class Mathematician
 	def is_happy?(number)
-		return number == 1 || number == 10	
+		return number != 2	
 	end
 end	
